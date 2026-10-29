@@ -1,0 +1,22 @@
+# Секреты
+.env
+*.env
+
+# База данных
+data/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Логи
+*.log
