@@ -1430,9 +1430,9 @@ class Service:
         if user.get("id") not in {offer["buyer_id"], offer["seller_id"]} or user.get("is_bot"):
             await self.answer(query_id, tr(language, "wrong_role"), True)
             return
-        if not self.has_access(user["id"]):
-            await self.answer(query_id, subtr(language, "welcome_locked"), True)
-            return
+        # Доступ к офферу определяется участием в этой сделке и ролью,
+        # а не наличием пользователя в workers. Получатель оффера может
+        # принять или отклонить его без подписки.
         message = query.get("message", {})
         if (message.get("business_connection_id") != offer["connection_id"]
                 or message.get("chat", {}).get("id") != offer["chat_id"]
